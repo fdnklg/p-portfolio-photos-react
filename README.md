@@ -14,3 +14,6 @@ This project was bootstrapped with:
 ### Fonts
 - Make sure to put all fonts you want to use inside ```public/fonts/```.
 - Link to your fonts at ```src/styles/GlobalStyles.js``` to display them correctly.
+
+### Update images
+...

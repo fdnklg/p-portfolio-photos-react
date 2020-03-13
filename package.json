@@ -8,10 +8,15 @@
   },
   "author": "fdnklg",
   "dependencies": {
+    "babel-node": "0.0.1-security",
     "babel-plugin-idx": "^2.4.0",
     "easy-peasy": "^3.3.0",
     "emotion-normalize": "^10.1.0",
+    "fraction.js": "^4.0.12",
+    "fs": "0.0.1-security",
     "idx": "^2.5.6",
+    "jpeg-exif": "^1.1.4",
+    "nodemon": "^2.0.2",
     "open": "^7.0.3",
     "prettier": "^1.19.1",
     "react": "^16.13.0",
@@ -22,10 +27,15 @@
     "theme-ui": "^0.3.1",
     "unfetch": "^4.1.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@babel/core": "^7.8.7",
+    "@babel/node": "^7.8.7",
+    "exif-async": "^1.0.6"
+  },
   "scripts": {
     "start": "react-scripts start && echo '/* /index.html  200' | cat >build/_redirects",
     "build": "react-scripts build",
+    "node": "nodemon --exec babel-node node/exif.js",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
