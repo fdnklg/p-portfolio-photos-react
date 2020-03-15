@@ -1,7 +1,16 @@
 /** @jsx jsx */
 import { jsx, Button } from 'theme-ui';
+import { Link, Switch, Route } from 'react-router-dom';
 
 import { useToggle } from 'components/Toggle/useToggle';
+
+const BackButton = p => {
+  return (
+    <Link to="/">
+      <Button variant="primary">Back</Button>
+    </Link>
+  )
+}
 
 export default p => {
   const {on, toggle} = useToggle()
@@ -11,7 +20,10 @@ export default p => {
         zIndex: '1'
       }}
     >
-      <Button 
+      <Switch>
+        <Route path="/project" render={BackButton}/>
+      </Switch>
+      <Button
         variant='primary'
         onClick={toggle}
       >
