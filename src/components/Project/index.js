@@ -5,6 +5,7 @@ import { withRouter } from 'react-router-dom';
 import { useStoreState } from 'easy-peasy';
 
 import Label from 'components/Label';
+import Carousel from './Carousel';
 
 export default withRouter(p => {
   const { data } = p;
@@ -59,7 +60,7 @@ export default withRouter(p => {
           px: [1, 3, 3, 7],
         }}
       >
-      {/* <Carousel content={project}/> */}
+      <Carousel content={selectedProject}/>
       </Box>
       <Box
         sx={{
