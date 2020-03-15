@@ -13,9 +13,6 @@ const { projects } = content;
 // - define namin convention of images
 // - think about automating image import
 
-const folder = 'zaf';
-const path = `public/img/${folder}`;
-
 const createExifObj = imgPath => {
   const data = exif.parseSync(imgPath);
   const subExif = data.SubExif;
@@ -58,13 +55,6 @@ const parsePath = path => {
   }
 }
 
-const write = data => {
-  fs.writeFile(`${__dirname}/../public/data/data.json`, `${JSON.stringify(data.content)}`, (err) => {
-    if (err) throw err;
-    console.log('The file has been saved!');
-  });
-}
-
 async function* getFiles(dir) {
   const dirents = await readdir(dir, { withFileTypes: true });
   for (const dirent of dirents) {
@@ -77,7 +67,14 @@ async function* getFiles(dir) {
   }
 }
 
-(async () => {
+const asyncForEach = async (array, callback) => {
+    for (let index = 0; index < array.length; index++) {
+        await callback(array[index], index, array);
+    }
+}
+
+// handler function, that groups
+const createMetadata = async (path, folder) => {
   const images = await readdir(path, { withFileTypes: false });
   const parsed = images.map(img => {
     const imgPath = path + '/' + img;
@@ -91,7 +88,25 @@ async function* getFiles(dir) {
   });
   const matchedProject = projects.find(p => p.path === folder);
   matchedProject.media = parsed;
-  write(c)
+}
+
+const writeFile = async (pathAndFilename, body) => {
+  fs.writeFileSync(pathAndFilename, body, err => {
+    if (err) throw err;
+    console.log('The file has been saved!');
+  });
+}
+
+(async () => {
+  const folderArr = ['zaf', 'mar'];
+  const saveTo = `${__dirname}/../public/data/data.json`;
+
+  await asyncForEach(folderArr, async (folder) => {
+    const path = `public/img/${folder}`;
+    const metadata = await createMetadata(path, folder);
+  })
+
+  await writeFile(saveTo, JSON.stringify(c.content))
 })();
 
 

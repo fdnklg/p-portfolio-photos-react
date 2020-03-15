@@ -25,11 +25,13 @@ export default {
     text: '#000',
     background: '#fff',
     primary: '#07c',
-    secondary: '#30c',
-    muted: '#f6f6f6',
-    lightgrey: "#f5f5f5",
-    midgrey: "#d8d8d8",
-    textgrey: "#343434",
+    modes: {
+      dark: {
+        text: '#fff',
+        background: '#000',
+        primary: '#07c',
+      }
+    }
   },
   text: {
     heading: {
@@ -37,6 +39,27 @@ export default {
       lineHeight: 'heading',
       fontWeight: 'heading',
     },
+  },
+  buttons: {
+    primary: {
+      color: 'text',
+      borderColor: 'text',
+      borderWidth: '1px',
+      borderStyle: 'solid',
+      outline: 'none',
+      transition: t => t.transitions[0],
+      cursor: 'pointer',
+      bg: 'background',
+      '&:hover': {
+        color: 'background',
+        borderColor: 'background',
+        bg: 'text',
+      }
+    },
+    secondary: {
+      color: 'background',
+      bg: 'secondary',
+    }
   },
   styles: {
     root: {
