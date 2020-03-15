@@ -1,4 +1,5 @@
 import { action, thunk, computed } from "easy-peasy";
+import idx from 'idx';
 
 const DataModel = {
   data: null,
@@ -17,6 +18,14 @@ const DataModel = {
       actions.loadDataFail();
     }
   }),
+  bg: false,
+  setBg: action(state => state.bg = false),
+  hoveredProject: false,
+  setHoveredProject: action((state,payload) => {
+    let bgImg = idx(state.data, _ => _.projects[payload].media[0].path);
+    state.bg = bgImg;
+    state.hoveredProject = payload;
+  })
 };
 
 export default DataModel;

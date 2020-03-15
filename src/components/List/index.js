@@ -6,7 +6,7 @@ import { NavLink } from 'react-router-dom';
 import ListItem from './ListItem';
 
 export default p => {
-  const { data, setHoveredProject } = p;
+  const { data } = p;
   const { projects } = data;
 
   return (
@@ -20,7 +20,6 @@ export default p => {
           key={`listItem-key-${id}`}
           activeId={id}
           path={path}
-          setHoveredProject={setHoveredProject}
         >
           {title}
         </ListItem>

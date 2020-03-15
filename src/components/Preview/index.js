@@ -2,9 +2,11 @@
 import { jsx, Box } from 'theme-ui';
 import Transition from 'react-transition-group/Transition';
 import { opacityFromState } from 'utils';
+import { useStoreState } from 'easy-peasy';
 
 export default p => {
   const { timeout, bgImg, inProp } = p;
+  const bg = useStoreState(state => state.bg);
   return (
     <Transition
       in={inProp}
@@ -25,7 +27,7 @@ export default p => {
               position: 'absolute',
               backgroundPosition: 'center',
               backgroundSize: 'cover',
-              background: `url(${bgImg}) no-repeat center center fixed`,
+              background: `url(${bg}) no-repeat center center fixed`,
               color: 'text',
               transition: t => t.transitions[2],
               opacity: opacityFromState(state)

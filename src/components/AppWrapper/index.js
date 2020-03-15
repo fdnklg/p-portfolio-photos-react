@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { jsx, Box, ThemeProvider, useColorMode } from 'theme-ui';
-import { useStoreState } from 'easy-peasy';
+import { useStoreState, useStoreActions } from 'easy-peasy';
 import React, { useState, useEffect } from 'react';
 import Theme from 'styles/Theme'
 import GlobalStyles from 'styles/GlobalStyles'
@@ -13,11 +13,8 @@ import Preview from 'components/Preview';
 import List from 'components/List';
 import Project from 'components/Project';
 
-export default p => {
-  const [hoveredProject, setHoveredProject] = useState(false);
+export default withRouter(p => {
   const data = useStoreState(state => state.data);
-  const bgImg = idx(data, _ => _.projects[hoveredProject].media[0].path);
-  const inProp = typeof bgImg === 'string' ? true : false;
 
   return (
     <ThemeProvider theme={Theme}>
@@ -35,7 +32,7 @@ export default p => {
           transition: t => t.transitions[2],
         }}
       >
-        <Preview inProp={inProp} timeout={0} bgImg={bgImg}/>
+        <Preview inProp={true} timeout={0}/>
         <Nav/>
         {data && (
           <Switch>
@@ -49,7 +46,6 @@ export default p => {
                 exact path="/"
                 render={() => (
                   <List
-                    setHoveredProject={setHoveredProject}
                     data={data}
                   />
                 )}
@@ -59,4 +55,4 @@ export default p => {
       </Box>
     </ThemeProvider>
   )
-}
+})
