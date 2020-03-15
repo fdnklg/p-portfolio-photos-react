@@ -17,7 +17,8 @@ export default p => {
   return (
     <nav
       sx={{
-        zIndex: '1'
+        zIndex: '1',
+        position: 'absolute'
       }}
     >
       <Switch>

@@ -39,7 +39,7 @@ export default withRouter(p => {
               <Route
                 exact path="/project/:projectId"
                 render={() => (
-                  <Project/>
+                  <Project data={data}/>
                 )}
               />
               <Route

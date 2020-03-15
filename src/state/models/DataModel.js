@@ -18,13 +18,14 @@ const DataModel = {
       actions.loadDataFail();
     }
   }),
+  selectedProject: false,
   bg: false,
   setBg: action(state => state.bg = false),
   hoveredProject: false,
   setHoveredProject: action((state,payload) => {
-    let bgImg = idx(state.data, _ => _.projects[payload].media[0].path);
-    state.bg = bgImg;
+    state.bg = idx(state.data, _ => _.projects[payload].media[0].path);
     state.hoveredProject = payload;
+    state.selectedProject = idx(state.data, _ => _.projects[payload]);
   })
 };
 
