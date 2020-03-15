@@ -6,7 +6,11 @@ import { useToggle } from 'components/Toggle/useToggle';
 export default p => {
   const {on, toggle} = useToggle()
   return (
-    <nav>
+    <nav
+      sx={{
+        zIndex: '1'
+      }}
+    >
       <Button 
         variant='primary'
         onClick={toggle}

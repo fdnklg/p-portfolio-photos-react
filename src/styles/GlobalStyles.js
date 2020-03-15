@@ -6,13 +6,13 @@ export default props =>
     styles={css`
       @font-face {
         font-family: 'Mier A Regular';
-        src: url('fonts/MierA-Regular.woff2') format('woff2'), url('fonts/MierA-Regular.woff') format('woff');
+        src: url('/fonts/MierA-Regular.woff2') format('woff2'), url('/fonts/MierA-Regular.woff') format('woff');
         font-weight: 600;
         font-style: normal
       }
       @font-face {
         font-family: 'Mier A Bold';
-        src: url('fonts/MierA-Bold.woff2') format('woff2'), url('fonts/MierA-Bold.woff') format('woff');
+        src: url('/fonts/MierA-Bold.woff2') format('woff2'), url('/fonts/MierA-Bold.woff') format('woff');
         font-weight: 600;
         font-style: normal
       }

@@ -14,11 +14,11 @@ const App = () => {
   const loadData = useStoreActions((action) => action.loadData);
   useEffect(() => {
     loadData();
-  },[]);
+  }, []);
   return (
     <Router history={history}>
       <Switch>
-        <Route exact path={['/']} component={AppWrapper} />
+        <Route path={['/']} component={AppWrapper} />
         <Route component={NotFoundRoute} />
       </Switch>
     </Router>

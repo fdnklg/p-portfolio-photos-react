@@ -30,7 +30,7 @@ const createExifObj = imgPath => {
 };
 
 const parsePath = path => {
-  // match chars until 1st occurence of _
+  // match chars until 1st occurenpce of _
   const yearRegEx = /[^_]*/;
   // match chars between 1st and 2nd occurence of _
   const folderRegEx = /(?<=_)[^\_]+/;
@@ -80,10 +80,11 @@ const createMetadata = async (path, folder) => {
     const imgPath = path + '/' + img;
     const exifObj = createExifObj(imgPath);
     const parsedPath = parsePath(img);
+    const slicedPath = imgPath.substring(6);
     return {
       ...parsedPath,
       ...exifObj,
-      path: imgPath
+      path: slicedPath
     }
   });
   const matchedProject = projects.find(p => p.path === folder);

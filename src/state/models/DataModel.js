@@ -1,4 +1,4 @@
-import { action, thunk } from "easy-peasy";
+import { action, thunk, computed } from "easy-peasy";
 
 const DataModel = {
   data: null,
@@ -10,7 +10,7 @@ const DataModel = {
   }),
   loadData: thunk(async (actions) => {
     try {
-      const response = await fetch("data/data.json");
+      const response = await fetch("/data/data.json");
       const data = await response.json();
       actions.loadDataSuccess(data);
     } catch (_) {
