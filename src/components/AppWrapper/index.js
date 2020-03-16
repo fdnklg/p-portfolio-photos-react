@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, Box, ThemeProvider, useColorMode } from 'theme-ui';
+import { jsx, Box, ThemeProvider, useColorMode, Flex } from 'theme-ui';
 import { useStoreState, useStoreActions } from 'easy-peasy';
 import React, { useState, useEffect } from 'react';
 import Theme from 'styles/Theme'
@@ -35,22 +35,22 @@ export default withRouter(p => {
         <Preview inProp={true} timeout={0}/>
         <Nav/>
         {data && (
-          <Switch>
-              <Route
-                exact path="/project/:projectId"
-                render={() => (
-                  <Project data={data}/>
-                )}
-              />
-              <Route
-                exact path="/"
-                render={() => (
-                  <List
-                    data={data}
-                  />
-                )}
-              />
-          </Switch>
+            <Switch>
+                <Route
+                  exact path="/project/:projectId"
+                  render={() => (
+                    <Project data={data}/>
+                  )}
+                />
+                <Route
+                  exact path="/"
+                  render={() => (
+                    <List
+                      data={data}
+                    />
+                  )}
+                />
+            </Switch>
         )}
       </Box>
     </ThemeProvider>

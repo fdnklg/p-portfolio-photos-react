@@ -4,18 +4,25 @@ import React, { Component, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useStoreActions } from "easy-peasy";
 
-const ListItem = ({ children, activeId, path }) => {
+import history from "history.js";
+
+const TableItem = ({ children, activeId, path, isNewYear }) => {
   const setHoveredProject = useStoreActions(action => action.setHoveredProject);
   const setBg = useStoreActions(action => action.setBg);
 
-  const handleClick = () => {
+  const handleClick = path => {
+    history.push(path);
     setBg(false);
   };
 
   return (
-    <li
+    <tr
       sx={{
-        cursor: "pointer"
+        cursor: "pointer",
+        fontSize: ["2", "3"],
+        width: "100%",
+        borderTop: isNewYear ? "1px solid #000" : "none",
+        borderColor: "text"
       }}
       onMouseEnter={() => {
         setHoveredProject(activeId);
@@ -23,12 +30,11 @@ const ListItem = ({ children, activeId, path }) => {
       onMouseLeave={() => {
         setHoveredProject(false);
       }}
+      onClick={() => handleClick(`project/${path}`)}
     >
-      <Link onClick={handleClick} to={`project/${path}`}>
-        {children}
-      </Link>
-    </li>
+      {children}
+    </tr>
   );
 };
 
-export default ListItem;
+export default TableItem;

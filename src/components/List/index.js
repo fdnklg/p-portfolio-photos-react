@@ -1,29 +1,54 @@
 /** @jsx jsx */
-import { jsx, Box } from 'theme-ui';
+import { jsx, Flex } from 'theme-ui';
 import React, { Component, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
+import TableItem from './TableItem';
 
-import ListItem from './ListItem';
+const isNewYear = (data, i) => {
+  const l = data.length;
+  const previous = data[i === 0 ? l - 1 : i - 1];
+  const current = data[i];
+  const next = data[i === l - 1 ? 0 : i + 1];
+  return previous.year !== current.year;
+};
 
 export default p => {
   const { data } = p;
   const { projects } = data;
 
   return (
-    <ul
-      sx={{
-        zIndex: '1'
+    <Flex
+      sx={{ 
+        textAlign: ['left', 'center', 'center'],
+        pb: ['4', '5', '5', '6'],
+        width: ['90vw','75vw','60vw'],
+        fontSize: ['3', '4', '4', '2']
       }}
     >
-      {projects.map(({ title, id, path }) => (
-        <ListItem
-          key={`listItem-key-${id}`}
-          activeId={id}
-          path={path}
-        >
-          {title}
-        </ListItem>
-      ))}
-    </ul>
+      <table
+        sx={{
+          zIndex: '1',
+          width: '100%',
+          borderCollapse: 'collapse'
+        }}
+      >
+        <tbody>
+          {projects.map(({ title, id, path, year }, i) => {
+            const newYear = isNewYear(projects, i);
+            return (
+              <TableItem
+                key={`tableItem-key-${id}`}
+                activeId={id}
+                path={path}
+                isNewYear={newYear}
+              >
+                <td align="left">{title}</td>
+                <td align="right">{year}</td>
+              </TableItem>
+            )
+          })}
+        </tbody>
+      </table>
+    </Flex>
   )
 }
