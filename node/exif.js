@@ -47,6 +47,8 @@ const parsePath = path => {
   const titleWithoutFileEnding = title.match(/[^.]*/)[0];
   const titleCleared = titleWithoutFileEnding.split('-').join(' ');
 
+  console.log(titleCleared, folder)
+
   return {
     title: titleCleared,
     order: parseInt(order),
@@ -73,9 +75,21 @@ const asyncForEach = async (array, callback) => {
     }
 }
 
+Array.prototype.remove = function() {
+    var what, a = arguments, L = a.length, ax;
+    while (L && this.length) {
+        what = a[--L];
+        while ((ax = this.indexOf(what)) !== -1) {
+            this.splice(ax, 1);
+        }
+    }
+    return this;
+};
+
 // handler function, that groups
 const createMetadata = async (path, folder) => {
   const images = await readdir(path, { withFileTypes: false });
+  images.remove('.DS_Store');
   const parsed = images.map(img => {
     const imgPath = path + '/' + img;
     const exifObj = createExifObj(imgPath);
@@ -99,7 +113,7 @@ const writeFile = async (pathAndFilename, body) => {
 }
 
 (async () => {
-  const folderArr = ['zaf', 'mar'];
+  const folderArr = ['il', 'mar', 'om', 'ar', 'zaf18'];
   const saveTo = `${__dirname}/../public/data/data.json`;
 
   await asyncForEach(folderArr, async (folder) => {

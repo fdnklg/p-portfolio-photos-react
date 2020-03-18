@@ -2,18 +2,42 @@ const content = {
   "projects":[
     {
       "id": 0,
-      "title":"South Africa",
-      "description":"I'm a description",
-      "path":"zaf",
-      "year":2020,
-      "media": []
-    },
-    {
-      "id": 1,
       "title":"Marocco",
       "description":"I'm a description",
       "path":"mar",
       "year":2014,
+      "media": []
+    },
+    {
+      "id": 1,
+      "title":"Argentina",
+      "description":"I'm a description",
+      "path":"ar",
+      "year":2015,
+      "media": []
+    },
+    {
+      "id": 2,
+      "title":"Oman",
+      "description":"I'm a description",
+      "path":"om",
+      "year":2017,
+      "media": []
+    },
+    {
+      "id": 3,
+      "title":"South Africa",
+      "description":"I'm a description",
+      "path":"zaf18",
+      "year":2018,
+      "media": []
+    },
+    {
+      "id": 4,
+      "title":"Israel",
+      "description":"I'm a description",
+      "path":"il",
+      "year":2019,
       "media": []
     },
   ]
