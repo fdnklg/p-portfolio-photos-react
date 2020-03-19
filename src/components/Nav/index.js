@@ -3,6 +3,7 @@ import { jsx, Button } from 'theme-ui';
 import { Link, Switch, Route } from 'react-router-dom';
 
 import { useToggle } from 'components/Toggle/useToggle';
+import Icon from 'components/Icon';
 
 const BackButton = p => {
   return (
@@ -27,8 +28,9 @@ export default p => {
       <Button
         variant='primary'
         onClick={toggle}
+        sx={{ border: 'none', '&:hover': { background: 'none', opacity: '.5' } }}
       >
-        {on ? 'Bright': 'Dark'}
+        <Icon mode={on} />
       </Button>
     </nav>
   )
