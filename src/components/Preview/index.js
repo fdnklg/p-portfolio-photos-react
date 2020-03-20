@@ -29,7 +29,6 @@ export default p => {
               backgroundSize: 'cover',
               background: `url(${bg}) no-repeat center center fixed`,
               color: 'text',
-              transition: t => t.transitions[2],
               opacity: opacityFromState(state)
             }}
           >

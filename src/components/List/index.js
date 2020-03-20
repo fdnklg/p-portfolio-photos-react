@@ -21,7 +21,9 @@ export default p => {
       sx={{ 
         textAlign: ['left', 'center', 'center'],
         pb: ['4', '5', '5', '6'],
-        width: ['90vw','75vw','60vw'],
+        px: [ '2', '3', '7', '8'],
+        mx: '0 auto',
+        width: ['100vw'],
         fontSize: ['3', '4', '4', '2']
       }}
     >

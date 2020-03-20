@@ -21,6 +21,8 @@ export default p => {
       }}
       naturalSlideWidth={100}
       naturalSlideHeight={65}
+      touchEnabled={true}
+      dragEnabled={true}
       totalSlides={media.length}
     >
       <Slider>

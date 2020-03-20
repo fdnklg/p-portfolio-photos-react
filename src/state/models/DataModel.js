@@ -19,6 +19,17 @@ const DataModel = {
     }
   }),
   selectedProject: false,
+  activeImage: false,
+  setActiveImage: action((state, payload) => {
+    state.activeImage = payload;
+  }),
+  setSelectedProject: action((state, payload) => {
+    state.selectedProject = payload;
+  }),
+  setCurrentSlideState: action((state, payload) => {
+    state.currentSlideState = payload;
+  }),
+  currentSlideState: 0,
   bg: false,
   setBg: action(state => state.bg = false),
   hoveredProject: false,

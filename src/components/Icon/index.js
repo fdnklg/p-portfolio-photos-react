@@ -8,8 +8,8 @@ export default p => {
     transition: t => t.transitions[1]
   }
 
-  const foreground = !mode ? "#000000" : "#FFFFFF";
-  const background = !mode ? "#FFFFFF" : "#000000";
+  const background = mode ? "#000000" : "#FFFFFF";
+  const foreground = mode ? "#FFFFFF" : "#000000";
 
   return (
     <svg width="16px" height="16px" viewBox="0 0 16 16">
