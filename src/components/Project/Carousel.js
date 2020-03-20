@@ -1,7 +1,10 @@
 /** @jsx jsx */
 import { jsx, Box, ThemeProvider, useColorMode, Button } from 'theme-ui';
 import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext, Image, WithStore } from 'pure-react-carousel';
+import { useSwipeable } from 'react-swipeable'
+import Transition from 'react-transition-group/Transition';
 import 'pure-react-carousel/dist/react-carousel.es.css';
+import { opacityFromState } from 'utils';
 
 export default p => {
   const { content, setCurrentSlide, currentSlide } = p;
@@ -14,44 +17,67 @@ export default p => {
     }, 50);
   }
 
+  const btnNext = document.getElementById('ButtonNext');
+  const btnBack = document.getElementById('ButtonBack');
+
+  const handlers = useSwipeable({
+    onSwipedLeft: () => btnNext.click(),
+    onSwipedRight: () => btnBack.click(),
+    preventDefaultTouchmoveEvent: true,
+    trackMouse: true
+  });
+
   return (
-    <CarouselProvider
-      sx={{
-        position: 'relative'
-      }}
-      naturalSlideWidth={100}
-      naturalSlideHeight={65}
-      touchEnabled={true}
-      dragEnabled={true}
-      totalSlides={media.length}
+    <Transition
+      in={true}
+      timeout={0}
+      appear={true}
+      mountOnEnter={true}
+      unmountOnExit={true}
     >
-      <Slider>
-        {
-          media.map((item,i) => {
-            const { path } = item;
-            return (
-              <Slide id={i} index={i} key={`slide-key-${i}`}>
-                <Image sx={{width: 'auto !important', margin: '0 auto'}} src={path}/>
-              </Slide>
-            )
-          })
-        }
-      </Slider>
-      <div
-        sx={{
-          position: 'absolute',
-          top: '0',
-          height: '100%',
-          width: '100%',
-          zIndex: '2',
-          display: 'flex',
-          background: 'red',
-          opacity: '0',
-        }}
-      >
-        <ButtonBack onClick={() => getCurrentSlide()} sx={{width: '50%'}}></ButtonBack>
-        <ButtonNext onClick={() => getCurrentSlide()} sx={{width: '50%'}}></ButtonNext>
-      </div>
-    </CarouselProvider>
+      {state => (
+        <CarouselProvider
+          sx={{
+            position: 'relative',
+            transition: t => t.transitions[3],
+            opacity: opacityFromState(state)
+          }}
+          naturalSlideWidth={100}
+          naturalSlideHeight={65}
+          touchEnabled={true}
+          dragEnabled={true}
+          totalSlides={media.length}
+        >
+          <Slider>
+            {
+              media.map((item,i) => {
+                const { path } = item;
+                return (
+                  <Slide id={i} index={i} key={`slide-key-${i}`}>
+                    <Image sx={{width: 'auto !important', margin: '0 auto'}} src={path}/>
+                  </Slide>
+                )
+              })
+            }
+          </Slider>
+          <div
+            {...handlers}
+            sx={{
+              position: 'absolute',
+              top: '0',
+              height: '100%',
+              width: '100%',
+              zIndex: '2',
+              display: 'flex',
+              background: 'red',
+              opacity: '0',
+            }}
+          >
+            <ButtonBack id="ButtonBack" onClick={() => getCurrentSlide()} sx={{width: '50%', cursor: 'w-resize'}}></ButtonBack>
+            <ButtonNext id="ButtonNext" onClick={() => getCurrentSlide()} sx={{width: '50%', cursor: 'e-resize'}}></ButtonNext>
+          </div>
+        </CarouselProvider>
+      )}
+    </Transition>
   )
 }

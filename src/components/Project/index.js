@@ -27,7 +27,7 @@ export default withRouter(p => {
   return (
     <Box
       sx={{ 
-        px: [ '2', '3', '7', '8'],
+        px: [ '2', '6', '7', '8'],
         mx: '0 auto',
       }}
     >

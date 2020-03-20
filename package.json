@@ -20,11 +20,13 @@
     "nodemon": "^2.0.2",
     "open": "^7.0.3",
     "prettier": "^1.19.1",
+    "pure-react-carousel": "^1.26.1",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
     "react-markdown": "^4.3.1",
     "react-router-dom": "^5.1.2",
     "react-scripts": "^3.4.0",
+    "react-swipeable": "^5.5.1",
     "react-transition-group": "^4.3.0",
     "theme-ui": "^0.3.1",
     "unfetch": "^4.1.0"

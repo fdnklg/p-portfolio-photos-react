@@ -10,19 +10,40 @@ import Icon from "components/Icon";
 
 const BackButton = p => {
   return (
-    <Link to="/">
-      <Button
-        sx={{
-          border: "none",
-          background: "none",
-          color: 'text',
-          padding: 0,
-          "&:hover": { background: "none", color: 'text', opacity: ".5" }
-        }}
-        variant="primary"
-      >
-        <Label>CLOSE</Label>
-      </Button>
+    <Link
+     to="/"
+     sx={{
+       fontSize: ['1'],
+       verticalAlign: 'super',
+       color: 'text',
+       textDecoration: 'none',
+       '&:hover': {
+         opacity: '.5',
+         transition: t => t.transitions[0]
+       }
+     }}
+     >
+     CLOSE
+    </Link>
+  );
+};
+
+const AboutButton = p => {
+  return (
+    <Link
+     to="/about"
+     sx={{
+       fontSize: ['1'],
+       verticalAlign: 'super',
+       color: 'text',
+       textDecoration: 'none',
+       '&:hover': {
+         opacity: '.5',
+         transition: t => t.transitions[0]
+       }
+     }}
+     >
+     ABOUT
     </Link>
   );
 };
@@ -43,7 +64,6 @@ export default p => {
     title
   } = activeImage;
 
-  console.log("activeImage", activeImage)
   return (
     <Box
       sx={{
@@ -52,7 +72,7 @@ export default p => {
         display: "flex",
         zIndex: '1',
         justifyContent: "space-between",
-        px: [3, 3, 4, 4],
+        px: [2, 3, 4, 4],
         py: [1, 2, 2, 3]
       }}
     >
@@ -63,13 +83,26 @@ export default p => {
           textAlign: "left",
         }}
       >
+      <Link
+        to="/"
+        sx={{
+          color: 'text',
+          textDecoration: 'none',
+          '&:hover': {
+            opacity: '.5',
+            transition: t => t.transitions[0]
+          }
+        }}
+      >
         <span sx={{
           display: ['none', 'block', 'block'],
           textTransform: 'uppercase',
           letterSpacing: '1px',
           alignSelf: "start",
           fontSize: '1',
-        }}>FABIAN DINKLAGE</span>
+        }}>
+          FABIAN DINKLAGE
+        </span>
         <span sx={{
           display: ['block', 'none'],
           textTransform: 'uppercase',
@@ -77,6 +110,7 @@ export default p => {
           letterSpacing: '1px',
           fontSize: '1',
         }}>F.D.</span>
+      </Link>
         <Button
           variant="primary"
           onClick={toggle}
@@ -118,11 +152,13 @@ export default p => {
         sx={{
           width: "300px",
           textAlign: "end",
-          alignSelf: "start"
+          alignSelf: "start",
         }}
       >
         <Switch>
           <Route path="/project" render={BackButton} />
+          <Route path="/about" render={BackButton} />
+          <Route exact path="/" render={AboutButton} />
         </Switch>
       </Box>
     </Box>

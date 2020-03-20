@@ -19,10 +19,14 @@ const TableItem = ({ children, activeId, path, isNewYear }) => {
     <tr
       sx={{
         cursor: "pointer",
-        fontSize: ["2", "3"],
+        fontSize: ["4", "5"],
         width: "100%",
-        borderTop: isNewYear ? "1px solid #000" : "none",
-        borderColor: "text"
+        borderTop: isNewYear ? ".5px dotted #000" : "none",
+        borderColor: "text",
+        '&:hover': {
+          transition: t => t.transitions[0],
+          opacity: '.5'
+        }
       }}
       onMouseEnter={() => {
         setHoveredProject(activeId);

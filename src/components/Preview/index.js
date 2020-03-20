@@ -8,16 +8,7 @@ export default p => {
   const { timeout, bgImg, inProp } = p;
   const bg = useStoreState(state => state.bg);
   return (
-    <Transition
-      in={inProp}
-      timeout={timeout}
-      appear={true}
-      mountOnEnter={true}
-      unmountOnExit={true}
-    >
-      {state => {
-        console.log(state, 'state');
-        return (
+
           <Box
             sx={{
               mx: 'auto',
@@ -29,12 +20,9 @@ export default p => {
               backgroundSize: 'cover',
               background: `url(${bg}) no-repeat center center fixed`,
               color: 'text',
-              opacity: opacityFromState(state)
             }}
           >
           </Box>
         )
-      }}
-      </Transition>
-  )
+
 }

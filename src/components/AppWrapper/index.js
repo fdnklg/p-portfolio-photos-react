@@ -10,7 +10,7 @@ import { Switch, Route, withRouter } from "react-router-dom";
 import LoadingOverlay from "components/LoadingOverlay";
 import Nav from "components/Nav";
 import Label from "components/Label";
-import Preview from "components/Preview";
+import Paragraph from "components/Paragraph";
 import List from "components/List";
 import Project from "components/Project";
 
@@ -20,8 +20,9 @@ export default withRouter(p => {
   const currentSlide = useStoreState(state => state.currentSlideState);
   const activeImage = useStoreState(state => state.activeImage);
   const projectTitle = selectedProject ? selectedProject.title : "";
+  const projectYear = selectedProject ? selectedProject.year : "";
   const imagesTotal = selectedProject ? selectedProject.media.length : 0;
-  const imageCount = `${parseInt(currentSlide) + 1} OF ${imagesTotal}`;
+  const imageCount = `${parseInt(currentSlide) + 1} / ${imagesTotal}`;
 
   return (
     <ThemeProvider theme={Theme}>
@@ -39,7 +40,6 @@ export default withRouter(p => {
           padding: "0"
         }}
       >
-        <Preview inProp={true} timeout={0} />
         <Nav />
         {data && (
           <Switch>
@@ -49,6 +49,7 @@ export default withRouter(p => {
               render={() => <Project data={data} />}
             />
             <Route exact path="/" render={() => <List data={data} />} />
+            <Route exact path="/about" render={() => <Paragraph />} />
           </Switch>
         )}
         <Box
@@ -57,22 +58,41 @@ export default withRouter(p => {
             display: "flex",
             zIndex: "2",
             justifyContent: "space-between",
-            px: [3, 3, 4, 4],
-            py: [1, 2, 2, 3]
+            px: [2, 3, 4, 4],
+            py: [2, 2, 2, 3]
           }}
         >
           <Box
             sx={{
               width: "300px",
               textAlign: "left",
-              alignSelf: "center"
+              alignSelf: "flex-end",
+              lineHeight: '100%',
             }}
           >
             <Switch>
               <Route
                 exact
                 path="/project/:projectId"
-                render={() => <Label>{projectTitle}</Label>}
+                render={() => <Label>{projectTitle}, {projectYear}</Label>}
+              />
+              <Route
+                exact
+                path="/about"
+                render={() => (
+                  <a
+                    sx={{
+                      textDecoration: "none",
+                      color: "text",
+                      transition: t => t.transitions[1],
+                      "&:hover": { opacity: ".5" }
+                    }}
+                    href="https://fabiandinklage.com/legal"
+                    target="_blank"
+                  >
+                    <Label>Legal notes</Label>
+                  </a>
+                )}
               />
               <Route
                 exact
@@ -99,7 +119,8 @@ export default withRouter(p => {
             sx={{
               width: "300px",
               textAlign: "center",
-              alignSelf: "start"
+              alignSelf: "start",
+              lineHeight: '100%',
             }}
           >
             <Switch>
@@ -115,7 +136,8 @@ export default withRouter(p => {
             sx={{
               width: "300px",
               textAlign: "end",
-              alignSelf: "start"
+              alignSelf: "flex-end",
+              lineHeight: '100%',
             }}
           >
             <Switch>
@@ -125,6 +147,7 @@ export default withRouter(p => {
                 render={() => <Label>{imageCount}</Label>}
               />
               <Route exact path="/" render={() => <Label>© 2020</Label>} />
+              <Route exact path="/about" render={() => <Label>© 2020</Label>} />
             </Switch>
           </Box>
         </Box>
