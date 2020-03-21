@@ -34,7 +34,7 @@ export default p => {
             px: [ '2', '6', '7', '9'],
             mx: '0 auto',
             width: ['100vw'],
-            transition: t => t.transitions[3],
+            transition: t => t.transitions[1],
             opacity: opacityFromState(state)
           }}
         >

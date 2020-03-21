@@ -1,7 +1,7 @@
 // example base theme from @theme-ui/presets
 export default {
   boxShadow: `0 2px 40px 0 rgba(30,55,145,0.15)`,
-  transitions: ['.125s opacity ease-in-out', '.250s opacity ease-in-out', '.375s opacity ease-in-out', '.5s opacity ease-in-out'],
+  transitions: ['.125s all ease-in-out', '.250s all ease-in-out', '.375s all ease-in-out', '.5s all ease-in-out'],
   borderLink: '1px solid black',
   // sx properties:
   breakpoints: ['48em', '70em' ,'90em', '102em'],

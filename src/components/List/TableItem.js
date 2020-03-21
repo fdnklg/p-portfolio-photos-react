@@ -21,7 +21,7 @@ const TableItem = ({ children, activeId, path, isNewYear }) => {
         cursor: "pointer",
         fontSize: ["4", "5"],
         width: "100%",
-        borderTop: isNewYear ? ".5px dotted #000" : "none",
+        borderTop: isNewYear ? ".25px solid #000" : "none",
         borderColor: "text",
         '&:hover': {
           transition: t => t.transitions[0],

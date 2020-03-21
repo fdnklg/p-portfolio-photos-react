@@ -10,6 +10,7 @@ export default p => {
         letterSpacing: '1px',
         display: 'flex',
         fontSize: '1',
+        margin: '0 auto'
       }}
     >
       {children}

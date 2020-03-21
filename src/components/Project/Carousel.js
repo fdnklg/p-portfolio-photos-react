@@ -6,9 +6,12 @@ import Transition from 'react-transition-group/Transition';
 import 'pure-react-carousel/dist/react-carousel.es.css';
 import { opacityFromState } from 'utils';
 
+import useWindowDimensions from 'components/UseWindowDimensions';
+
 export default p => {
   const { content, setCurrentSlide, currentSlide } = p;
   const { media  } = content;
+  const { height, width } = useWindowDimensions();
 
   const getCurrentSlide = () => {
     setTimeout(() => {

@@ -27,6 +27,7 @@
     "react-router-dom": "^5.1.2",
     "react-scripts": "^3.4.0",
     "react-swipeable": "^5.5.1",
+    "react-text-transition": "^1.0.2",
     "react-transition-group": "^4.3.0",
     "theme-ui": "^0.3.1",
     "unfetch": "^4.1.0"

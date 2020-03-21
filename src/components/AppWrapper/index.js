@@ -1,15 +1,17 @@
 /** @jsx jsx */
-import { jsx, Box, ThemeProvider, useColorMode, Flex } from "theme-ui";
+import { jsx, Box, ThemeProvider, Flex } from "theme-ui";
 import { useStoreState, useStoreActions } from "easy-peasy";
 import React, { useState, useEffect } from "react";
 import Theme from "styles/Theme";
 import GlobalStyles from "styles/GlobalStyles";
 import idx from "idx";
 import { Switch, Route, withRouter } from "react-router-dom";
+import TextTransition, { presets } from "react-text-transition";
 
 import LoadingOverlay from "components/LoadingOverlay";
 import Nav from "components/Nav";
 import Label from "components/Label";
+
 import Paragraph from "components/Paragraph";
 import List from "components/List";
 import Project from "components/Project";
@@ -37,6 +39,7 @@ export default withRouter(p => {
           backgroundColor: "background",
           alignItems: "center",
           justifyContent: "center",
+          transition: t => t.transitions[0],
           padding: "0"
         }}
       >
@@ -65,8 +68,11 @@ export default withRouter(p => {
           <Box
             sx={{
               width: "300px",
-              textAlign: "left",
-              alignSelf: "flex-end",
+              height: ['60px'],
+              display: 'flex',
+              alignItems: 'flex-end',
+              textAlign: "start",
+              alignSelf: "start",
               lineHeight: '100%',
             }}
           >
@@ -74,7 +80,7 @@ export default withRouter(p => {
               <Route
                 exact
                 path="/project/:projectId"
-                render={() => <Label>{projectTitle}, {projectYear}</Label>}
+                render={() => <Label>{projectTitle}</Label>}
               />
               <Route
                 exact
@@ -118,6 +124,10 @@ export default withRouter(p => {
           <Box
             sx={{
               width: "300px",
+              height: ['60px'],
+              display: 'flex',
+              alignItems: 'flex-end',
+              justifyContent: 'center',
               textAlign: "center",
               alignSelf: "start",
               lineHeight: '100%',
@@ -127,7 +137,11 @@ export default withRouter(p => {
               <Route
                 exact
                 path="/project/:projectId"
-                render={() => <Label>{activeImage.title}</Label>}
+                render={() => <Label><TextTransition
+                        noOverflow={true}
+                        springConfig={presets.stiff}
+                        text={activeImage.title}
+                      /></Label>}
               />
             </Switch>
           </Box>
@@ -135,8 +149,12 @@ export default withRouter(p => {
           <Box
             sx={{
               width: "300px",
-              textAlign: "end",
-              alignSelf: "flex-end",
+              height: ['60px'],
+              display: 'flex',
+              alignItems: 'flex-end',
+              justifyContent: 'flex-end',
+              textAlign: "center",
+              alignSelf: "start",
               lineHeight: '100%',
             }}
           >
@@ -144,7 +162,23 @@ export default withRouter(p => {
               <Route
                 exact
                 path="/project/:projectId"
-                render={() => <Label>{imageCount}</Label>}
+                render={() => {
+                  return (
+                    <Label>
+                      <TextTransition
+                        noOverflow={true}
+                        springConfig={presets.stiff}
+                        text={`${parseInt(currentSlide) + 1}`}
+                      />
+                      { }
+                      <TextTransition
+                        noOverflow={true}
+                        springConfig={presets.stiff}
+                        text={` /${imagesTotal}`}
+                      />
+                    </Label>
+                  )
+                }}
               />
               <Route exact path="/" render={() => <Label>© 2020</Label>} />
               <Route exact path="/about" render={() => <Label>© 2020</Label>} />
