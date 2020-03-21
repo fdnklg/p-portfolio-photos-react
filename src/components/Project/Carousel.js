@@ -30,6 +30,31 @@ export default p => {
     trackMouse: true
   });
 
+
+  const checkKey = (e) => {
+
+      e = e || window.event;
+
+      if (e.keyCode == '38') {
+          // up arrow
+          btnBack.click()
+      }
+      else if (e.keyCode == '40') {
+          // down arrow
+          btnNext.click()
+      }
+      else if (e.keyCode == '37') {
+        // left arrow
+        btnBack.click()
+      }
+      else if (e.keyCode == '39') {
+        // right arrow
+        btnNext.click()
+      }
+
+  }
+  document.onkeydown = checkKey;
+
   return (
     <Transition
       in={true}
