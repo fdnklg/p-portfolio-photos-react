@@ -7,6 +7,8 @@ import { useStoreState, useStoreActions } from "easy-peasy";
 import Label from "components/Label";
 import Carousel from "./Carousel";
 
+import useWindowDimensions from 'components/UseWindowDimensions';
+
 export default withRouter(p => {
   const { data } = p;
   const { projects } = data;
@@ -17,6 +19,10 @@ export default withRouter(p => {
   const setActiveImage = useStoreActions(a => a.setActiveImage);
   const setSelectedProject = useStoreActions(a => a.setSelectedProject);
   const setCurrentSlideState = useStoreActions(a => a.setCurrentSlideState);
+  const { height, width } = useWindowDimensions();
+  const format = (width / height) * .9;
+
+  console.log(format)
 
   useEffect(() => {
     setActiveImage(activeImage);
@@ -27,7 +33,7 @@ export default withRouter(p => {
   return (
     <Box
       sx={{ 
-        px: [ '2', '6', '7', '8'],
+        px: [ format > 1.1 ? '7' : '2', format > 1.25 ? '7' : '6', format > 1.25 ? '8' : '7', width > 1000 && format > 1.6 ? '9' : '8'],
         mx: '0 auto',
       }}
     >

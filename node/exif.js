@@ -90,6 +90,11 @@ Array.prototype.remove = function() {
 const createMetadata = async (path, folder) => {
   const images = await readdir(path, { withFileTypes: false });
   images.remove('.DS_Store');
+  images.sort(function(a, b){
+    if(a < b) { return -1; }
+    if(a > b) { return 1; }
+    return 0;
+})
   const parsed = images.map(img => {
     const imgPath = path + '/' + img;
     const exifObj = createExifObj(imgPath);

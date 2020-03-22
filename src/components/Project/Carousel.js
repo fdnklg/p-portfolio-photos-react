@@ -42,6 +42,8 @@ export default p => {
   const { content, setCurrentSlide, currentSlide } = p;
   const { media } = content;
   const { height, width } = useWindowDimensions();
+  const format = (width / height) * .9;
+
 
   const btnNext = document.getElementById("ButtonNext");
   const btnBack = document.getElementById("ButtonBack");
@@ -64,18 +66,18 @@ export default p => {
 
     if (e.keyCode == "38") {
       // up arrow
-      btnBack.click();
+      if (btnBack) btnBack.click();
     } else if (e.keyCode == "40") {
       // down arrow
-      btnNext.click();
+      if (btnNext) btnNext.click();
     } else if (e.keyCode == "27") {
-      BtnClose.click();
+      if (BtnClose) BtnClose.click();
     } else if (e.keyCode == "37") {
       // left arrow
-      btnBack.click();
+      if (btnBack) btnBack.click();
     } else if (e.keyCode == "39") {
       // right arrow
-      btnNext.click();
+      if (btnNext) btnNext.click();
     }
   };
 
