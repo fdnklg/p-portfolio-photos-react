@@ -113,7 +113,7 @@ const writeFile = async (pathAndFilename, body) => {
 }
 
 (async () => {
-  const folderArr = ['il', 'mar', 'om', 'ar', 'zaf18'];
+  const folderArr = ['il', 'mar', 'om', 'ar', 'zaf18', 'us'];
   const saveTo = `${__dirname}/../public/data/data.json`;
 
   await asyncForEach(folderArr, async (folder) => {

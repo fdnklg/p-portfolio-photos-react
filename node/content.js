@@ -21,7 +21,7 @@ const content = {
       "title":"Oman",
       "description":"I'm a description",
       "path":"om",
-      "year":2017,
+      "year":2018,
       "media": []
     },
     {
@@ -37,6 +37,14 @@ const content = {
       "title":"Israel",
       "description":"I'm a description",
       "path":"il",
+      "year":2019,
+      "media": []
+    },
+    {
+      "id": 5,
+      "title":"U.S.",
+      "description":"I'm a description",
+      "path":"us",
       "year":2019,
       "media": []
     },

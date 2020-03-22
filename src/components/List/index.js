@@ -56,7 +56,7 @@ export default p => {
                     isNewYear={newYear}
                   >
                     <td align="left">{title}</td>
-                    <td sx={{fontFamily: 'Mier A Regular', py: '5px'}} align="right">{year}</td>
+                    <td sx={{fontFamily: 'Mier A Regular', pt: '5px', pb: !newYear ? '2trn5px' : '0px'}} align="right">{newYear ? year : ''}</td>
                   </TableItem>
                 )
               })}

@@ -14,6 +14,7 @@ const BackButton = p => {
   return (
     <Link
       to="/"
+      id="BtnClose"
       sx={{
         fontSize: ["1"],
         verticalAlign: "super",
