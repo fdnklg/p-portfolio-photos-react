@@ -16,11 +16,11 @@ import Paragraph from "components/Paragraph";
 import List from "components/List";
 import Project from "components/Project";
 
-export default withRouter(p => {
-  const data = useStoreState(state => state.data);
-  const selectedProject = useStoreState(state => state.selectedProject);
-  const currentSlide = useStoreState(state => state.currentSlideState);
-  const activeImage = useStoreState(state => state.activeImage);
+export default withRouter((p) => {
+  const data = useStoreState((state) => state.data);
+  const selectedProject = useStoreState((state) => state.selectedProject);
+  const currentSlide = useStoreState((state) => state.currentSlideState);
+  const activeImage = useStoreState((state) => state.activeImage);
   const projectTitle = selectedProject ? selectedProject.title : "";
   const projectYear = selectedProject ? selectedProject.year : "";
   const imagesTotal = selectedProject ? selectedProject.media.length : 0;
@@ -39,8 +39,8 @@ export default withRouter(p => {
           backgroundColor: "background",
           alignItems: "center",
           justifyContent: "center",
-          transition: t => t.transitions[0],
-          padding: "0"
+          transition: (t) => t.transitions[0],
+          padding: "0",
         }}
       >
         <Nav />
@@ -62,18 +62,18 @@ export default withRouter(p => {
             zIndex: "2",
             justifyContent: "space-between",
             px: [2, 3, 4, 4],
-            py: [2, 2, 2, 3]
+            py: [2, 2, 2, 3],
           }}
         >
           <Box
             sx={{
               width: "300px",
-              height: ['60px'],
-              display: 'flex',
-              alignItems: 'flex-end',
+              height: ["60px"],
+              display: "flex",
+              alignItems: "flex-end",
               textAlign: "start",
               alignSelf: "start",
-              lineHeight: '100%',
+              lineHeight: "100%",
             }}
           >
             <Switch>
@@ -82,7 +82,7 @@ export default withRouter(p => {
                 path="/project/:projectId"
                 render={() => <Label>{projectTitle}</Label>}
               />
-              <Route
+              {/* <Route
                 exact
                 path="/about"
                 render={() => (
@@ -117,31 +117,35 @@ export default withRouter(p => {
                     <Label>Legal notes</Label>
                   </a>
                 )}
-              />
+              /> */}
             </Switch>
           </Box>
 
           <Box
             sx={{
               width: "300px",
-              height: ['60px'],
-              display: 'flex',
-              alignItems: 'flex-end',
-              justifyContent: 'center',
+              height: ["60px"],
+              display: "flex",
+              alignItems: "flex-end",
+              justifyContent: "center",
               textAlign: "center",
               alignSelf: "start",
-              lineHeight: '100%',
+              lineHeight: "100%",
             }}
           >
             <Switch>
               <Route
                 exact
                 path="/project/:projectId"
-                render={() => <Label><TextTransition
-                        noOverflow={true}
-                        springConfig={presets.stiff}
-                        text={activeImage.title}
-                      /></Label>}
+                render={() => (
+                  <Label>
+                    <TextTransition
+                      noOverflow={true}
+                      springConfig={presets.stiff}
+                      text={activeImage.title}
+                    />
+                  </Label>
+                )}
               />
             </Switch>
           </Box>
@@ -149,13 +153,13 @@ export default withRouter(p => {
           <Box
             sx={{
               width: "300px",
-              height: ['60px'],
-              display: 'flex',
-              alignItems: 'flex-end',
-              justifyContent: 'flex-end',
+              height: ["60px"],
+              display: "flex",
+              alignItems: "flex-end",
+              justifyContent: "flex-end",
               textAlign: "center",
               alignSelf: "start",
-              lineHeight: '100%',
+              lineHeight: "100%",
             }}
           >
             <Switch>
@@ -170,14 +174,14 @@ export default withRouter(p => {
                         springConfig={presets.stiff}
                         text={`${parseInt(currentSlide) + 1}`}
                       />
-                      { }
+                      {}
                       <TextTransition
                         noOverflow={true}
                         springConfig={presets.stiff}
                         text={` /${imagesTotal}`}
                       />
                     </Label>
-                  )
+                  );
                 }}
               />
               <Route exact path="/" render={() => <Label>© 2020</Label>} />
